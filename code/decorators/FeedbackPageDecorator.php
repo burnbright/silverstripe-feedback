@@ -4,7 +4,6 @@ class FeedbackPageDecorator extends DataObjectDecorator{
 	//extend page to show feedback link
 	static function initialize() {
 		/* Record Crawlers */
-		
 				
 		/* Launch Analytics */
 		self::addFeedback();
@@ -31,8 +30,6 @@ $script = <<<JS
 JS;
 		
 		Requirements::customScript($script,'feedbackpopup');
-		
-		
 	}
 	
 	function FeedbackSideLink(){
