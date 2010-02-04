@@ -1,0 +1,41 @@
+#FeedbackSideLink{
+	position:fixed;
+	z-index:1000;
+	top:10%;
+	height:150px;
+	width:30px;
+	overflow: hidden;
+	border:3px solid #000000;
+	background: #333;
+}
+
+#FeedbackSideLink a{
+	background-position:top left;
+	display:block;
+	width:40px;
+	height:150px;
+	overflow:hidden;
+}
+
+#FeedbackSideLink.leftside{
+	left:0;
+	border-left:none;
+}
+
+#FeedbackSideLink:hover{
+	width:33px;
+	background: #666;
+}
+
+div#FeedbackSideLink{ position: absolute; left: 0px; top: 10%; }
+div#FeedbackSideLink a{background-image:url('../images/givefeedback.jpg');}
+div#FeedbackSideLink a:hover{background-position:bottom left;}
+
+body > div#FeedbackSideLink { position: fixed; background-position:bottom left; }
+body > div#FeedbackSideLink a{
+	background:#333333 url('../images/givefeedback.png');
+}
+body > div#FeedbackSideLink a:hover{
+	background-color:#666666;
+	background-position:top left;
+}

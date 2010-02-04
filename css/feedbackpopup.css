@@ -1,0 +1,71 @@
+html,body{
+	margin:0;
+	padding:0;
+}
+
+
+#FeedbackPage ul,ol{
+	padding:0;margin:0;
+}
+
+#FeedbackPage form ul.optionset li{
+	display:block;
+	float:left;
+	width:20%;
+	text-align:center;
+}
+
+#FeedbackPage{
+	font-size:12px;
+	width:100%;
+}
+
+#FeedbackPage div.inner{
+	margin:10px;
+}
+
+#FeedbackPage form{
+	background:#eeeeee;
+}
+
+#FeedbackPage strong{
+	font-weight:bold;
+}
+
+#FeedbackPage h1{
+	font-size:18px;
+	font-weight:bold;
+	padding:0;
+	margin:0;
+	margin-bottom:3px;
+}
+#FeedbackPage p{
+	margin:0;padding: 5px 0;
+}
+
+#FeedbackPage *{
+	font-family:arial,verdana,sans-serif;
+}
+
+#FeedbackPage form .field{
+	padding-bottom:3px;
+}
+
+#FeedbackPage form legend{display:none;}
+
+#FeedbackPage form input.text,
+#FeedbackPage form textarea,
+#FeedbackPage form select{
+	width:100%;
+	font-size:14px;
+	padding:3px;
+}
+
+#FeedbackPage form select option{
+	font-size:12px;
+}
+
+#FeedbackPage form .Actions{
+	text-align:right;
+	padding:3px;
+}
