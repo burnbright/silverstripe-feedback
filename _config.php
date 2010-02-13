@@ -6,4 +6,5 @@ Object::add_extension('SiteTree', 'FeedbackPageDecorator');
  */
 Director::add_callback(array("FeedbackPageDecorator","initialize"));
 
+
 ?>
