@@ -10,7 +10,7 @@ class FeedbackPageDecorator extends DataObjectDecorator{
 	}
 	
 	static function addFeedback(){
-		if(Feedback::canView()){
+		if(Feedback::canSee()){
 			Requirements::css('feedback/css/sidefeedback.css');
 			Requirements::javascript('jsparty/jquery/jquery.js');
 			Requirements::javascript('feedback/javascript/jquery.popupWindow.js');
@@ -34,7 +34,7 @@ JS;
 	}
 	
 	function FeedbackSideLink(){
-		if(Feedback::canView())
+		if(Feedback::canSee())
 			return "FeedbackPage/window/".$this->owner->ID."?currenturl=".$this->FeedbackURL();
 		return false;
 	}

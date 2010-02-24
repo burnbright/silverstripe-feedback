@@ -28,16 +28,18 @@ class Feedback extends DataObject{
    static $membergroup = null;
    
    static function set_member_group($group = 'all'){
-   	self::$membersonly = $group;
+   	self::$membergroup = $group;
    }
    
-   static function canView(){
+   static function canSee(){
    	if(!self::$membergroup)
    		return false;
    	if(self::$membergroup == 'all' && Member::currentUser()){
    		return true;
+   	}elseif(Member::currentUser() && Member::currentUser()->inGroup(self::$membergroup)){
+   		return true;
    	}
-   	return Member::currentUser()->inGroup(self::$membergroup);
+   	return false;
    }
    
    function getMemberEmail(){
