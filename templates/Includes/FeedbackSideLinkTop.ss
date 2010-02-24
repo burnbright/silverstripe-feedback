@@ -1,3 +1,4 @@
+<% if FeedbackSideLink %>
 <!--[if gte IE 5.5]>
 <![if lt IE 7]>
 <style type="text/css">
@@ -9,3 +10,4 @@ div#FeedbackSideLink {
 </style>
 <![endif]>
 <![endif]-->
+<% end_if %>

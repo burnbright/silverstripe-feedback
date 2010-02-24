@@ -19,12 +19,26 @@ class Feedback extends DataObject{
    static $summary_fields = array('Message','OverallRating','Category','URL','MemberName','MemberEmail');
    //TODO: add created
    
-   
    static $casting = array(
    	'MemberEmail' => 'Varchar',
    	'MemberName' => 'Varchar',
 
    );
+   
+   static $membergroup = null;
+   
+   static function set_member_group($group = 'all'){
+   	self::$membersonly = $group;
+   }
+   
+   static function canView(){
+   	if(!self::$membergroup)
+   		return false;
+   	if(self::$membergroup == 'all' && Member::currentUser()){
+   		return true;
+   	}
+   	return Member::currentUser()->inGroup(self::$membergroup);
+   }
    
    function getMemberEmail(){
    		if($this->Email){

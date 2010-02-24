@@ -10,30 +10,33 @@ class FeedbackPageDecorator extends DataObjectDecorator{
 	}
 	
 	static function addFeedback(){
-
-		Requirements::css('feedback/css/sidefeedback.css');
-		Requirements::javascript('jsparty/jquery/jquery.js');
-		Requirements::javascript('feedback/javascript/jquery.popupWindow.js');
-		
+		if(Feedback::canView()){
+			Requirements::css('feedback/css/sidefeedback.css');
+			Requirements::javascript('jsparty/jquery/jquery.js');
+			Requirements::javascript('feedback/javascript/jquery.popupWindow.js');
+			
 $script = <<<JS
-		 (function($){
-		 $(document).ready(function() {
-			$('#FeedbackSideLink a.feedbacklink').popupWindow({
-					height:500,
-					width:350,
-					centerBrowser:1,
-					windowName: "Give Feedback"
-					//windowURL: "FeedbackPage/window?current="+window.location
-			});
-  		});
-		})(jQuery);
+			 (function($){
+			 $(document).ready(function() {
+				$('#FeedbackSideLink a.feedbacklink').popupWindow({
+						height:500,
+						width:350,
+						centerBrowser:1,
+						windowName: "Give Feedback"
+						//windowURL: "FeedbackPage/window?current="+window.location
+				});
+	  		});
+			})(jQuery);
 JS;
-		
-		Requirements::customScript($script,'feedbackpopup');
+			
+			Requirements::customScript($script,'feedbackpopup');
+		}
 	}
 	
 	function FeedbackSideLink(){
-		return "FeedbackPage/window/".$this->owner->ID."?currenturl=".$this->FeedbackURL();
+		if(Feedback::canView())
+			return "FeedbackPage/window/".$this->owner->ID."?currenturl=".$this->FeedbackURL();
+		return false;
 	}
 	
 	function FeedbackURL(){
