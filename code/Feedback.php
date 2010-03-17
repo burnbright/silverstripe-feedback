@@ -22,7 +22,6 @@ class Feedback extends DataObject{
    static $casting = array(
    	'MemberEmail' => 'Varchar',
    	'MemberName' => 'Varchar',
-
    );
    
    static $membergroup = null;

@@ -1,6 +1,14 @@
 <?php
 class FeedbackPage extends Controller{
 	
+	static $emailto = null;
+	static $emailfeedback = false;
+	
+	function enableEmailFeedback($email = null){
+		if($email)
+			self::$emailto = $email;
+		self::$emailfeedback = true;
+	}
 	
 	function window(){
 		Requirements::css('feedback/css/feedbackpopup.css');
@@ -68,8 +76,16 @@ class FeedbackPage extends Controller{
 			$feedback->PageID = (int)$data['PageID'];
 		}
 		$feedback->write();
+		
+		if(self::$emailfeedback) $this->emailFeedback($feedback);
 		$this->window();
 		return "<p>Thank you. Your feedback has been recorded.</p>";
+	}
+	
+	function emailFeedback($feedback){
+		$to = (self::$emailto && Email::validEmailAddress()) ? self::$emailto : Email::getAdminEmail();		
+		$email = new Email(Email::getAdminEmail(),$to,'Website Feedback',$feedback->renderWith('FeedbackEmail'));
+		$email->send();
 	}
 	
 }
