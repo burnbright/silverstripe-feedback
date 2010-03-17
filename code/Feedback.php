@@ -25,7 +25,7 @@ class Feedback extends DataObject{
 
    );
    
-   static $membergroup = null;
+   static $membergroup = 'all';
    
    static function set_member_group($group = 'all'){
    	self::$membergroup = $group;
