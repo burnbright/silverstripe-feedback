@@ -25,22 +25,22 @@ class Feedback extends DataObject{
 
    );
    
-   static $membergroup = 'all';
+   static $membergroup = null;
    
    static function set_member_group($group = 'all'){
-   	self::$membergroup = $group;
+   		self::$membergroup = $group;
    }
    
-   static function canSee(){
-   	if(!self::$membergroup)
-   		return false;
-   	if(self::$membergroup == 'all' && Member::currentUser()){
-   		return true;
-   	}elseif(Member::currentUser() && Member::currentUser()->inGroup(self::$membergroup)){
-   		return true;
-   	}
-   	return false;
-   }
+	static function canSee(){
+		if(!self::$membergroup)
+			return true;
+		if(self::$membergroup == 'all' && Member::currentUser()){
+			return true;
+		}elseif(Member::currentUser() && Member::currentUser()->inGroup(self::$membergroup)){
+			return true;
+		}
+		return false;
+	}
    
    function getMemberEmail(){
    		if($this->Email){
