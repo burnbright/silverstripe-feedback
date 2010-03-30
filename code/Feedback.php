@@ -16,8 +16,22 @@ class Feedback extends DataObject{
 		'Submitter' => 'Member'
 	);
 
-   static $summary_fields = array('Message','OverallRating','Category','URL','MemberName','MemberEmail');
-   //TODO: add created
+   static $summary_fields = array(
+		'Created',
+		'Message',
+		'OverallRating',
+		'Category',
+		'URL',
+		'MemberName',
+		'MemberEmail'
+	);
+   
+   public static $searchable_fields = array(
+    'URL',
+   	'MemberName',
+   	'Message',
+   	'Category'
+   );
    
    static $casting = array(
    	'MemberEmail' => 'Varchar',
