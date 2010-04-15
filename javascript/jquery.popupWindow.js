@@ -1,5 +1,5 @@
 (function($){
-	
+
 	$.fn.popupWindow = function(instanceSettings){
 		
 		return this.each(function(){

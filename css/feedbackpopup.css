@@ -61,6 +61,10 @@ html,body{
 	padding:3px;
 }
 
+#FeedbackPage form textarea{
+	height:100px;
+}
+
 #FeedbackPage form select option{
 	font-size:12px;
 }

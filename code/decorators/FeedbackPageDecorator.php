@@ -1,18 +1,13 @@
 <?php
 class FeedbackPageDecorator extends DataObjectDecorator{
 	
-	//extend page to show feedback link
-	static function initialize() {
-		/* Record Crawlers */
-				
-		/* Launch Analytics */
-		self::addFeedback();
+	function PreInitRequirements(){
+		Requirements::javascript('jsparty/jquery/jquery.js'); //interferes with other versions
 	}
 	
-	static function addFeedback(){
+	function Requirements(){
 		if(Feedback::canSee()){
 			Requirements::css('feedback/css/sidefeedback.css');
-			Requirements::javascript('jsparty/jquery/jquery.js');
 			Requirements::javascript('feedback/javascript/jquery.popupWindow.js');
 			
 $script = <<<JS
