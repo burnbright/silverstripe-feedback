@@ -83,7 +83,7 @@ class FeedbackPage extends Controller{
 	}
 	
 	function emailFeedback($feedback){
-		$to = (self::$emailto && Email::validEmailAddress()) ? self::$emailto : Email::getAdminEmail();		
+		$to = (self::$emailto && Email::validEmailAddress(self::$emailto)) ? self::$emailto : Email::getAdminEmail();		
 		$email = new Email(Email::getAdminEmail(),$to,'Website Feedback',$feedback->renderWith('FeedbackEmail'));
 		$email->send();
 	}
