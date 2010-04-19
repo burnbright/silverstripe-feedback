@@ -1,0 +1,10 @@
+#ModelAdminPanel{
+	overflow:visible !important;
+	height:auto !important;
+}
+
+body.ModelAdmin #right .ajaxActions {
+	bottom:28px;
+	position:fixed;
+	right:25px;
+}

@@ -8,5 +8,11 @@ class FeedbackManager extends ModelAdmin{
 		'Feedback'
 	);
 	
+	function init(){
+		parent::init();
+		
+		Requirements::css('feedback/css/adminfix.css');
+	}
+	
 }
 ?>
