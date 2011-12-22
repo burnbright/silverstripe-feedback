@@ -1,31 +1,38 @@
 <?php
-class FeedbackPageDecorator extends DataObjectDecorator{
+class FeedbackPageDecorator extends Extension{
 	
-	function PreInitRequirements(){
-		Requirements::javascript('jsparty/jquery/jquery.js'); //interferes with other versions
-	}
-	
-	function Requirements(){
+	function onAfterInit(){
+		Requirements::javascript(THIRDPARTY_DIR.'/jquery/jquery.js'); //interferes with other versions
+		
 		if(Feedback::canSee()){
 			Requirements::css('feedback/css/sidefeedback.css');
 			Requirements::javascript('feedback/javascript/jquery.popupWindow.js');
-			
-$script = <<<JS
-			 (function($){
-			 $(document).ready(function() {
-				$('#FeedbackSideLink a.feedbacklink').popupWindow({
-						height:500,
-						width:350,
-						centerBrowser:1,
-						windowName: "Give Feedback"
-						//windowURL: "FeedbackPage/window?current="+window.location
-				});
-	  		});
-			})(jQuery);
+				
+			$script = <<<JS
+					 (function($){
+					 $(document).ready(function() {
+						$('#FeedbackSideLink a.feedbacklink').popupWindow({
+								height:500,
+								width:350,
+								centerBrowser:1,
+								windowName: "Give Feedback"
+								//windowURL: "FeedbackPage/window?current="+window.location
+						});
+			  		});
+					})(jQuery);
 JS;
-			
+				
 			Requirements::customScript($script,'feedbackpopup');
 		}
+	}
+	
+	function Feedback(){
+		
+		$data = new ArrayData(array(
+			'FeedbackSideLink' => $this->FeedbackSideLink()
+		));
+		
+		return $data->renderWith('FeedbackSideLink');
 	}
 	
 	function FeedbackSideLink(){

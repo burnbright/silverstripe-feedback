@@ -23,11 +23,11 @@ class FeedbackPage extends Controller{
 	function Form(){
 		
 		$categorydd = array(
-			'Compliment' => '<span>Compliment</strong> - what you like and love',			
-			'Suggestion' => '<span>Suggestions</span> - for new pages and features',			
-			'Bug' => '<span>Bugs</span> - such as technical issues',
-			'Site Content' => '<span>Site Content</span> - changes, additions and page ordering',
-			'Other' => '<span>Other</span> - thoughts about the site'
+			'Compliment' => 'Compliment - what you like and love',			
+			'Suggestion' => 'Suggestions - for new pages and features',			
+			'Bug' => 'Bugs - such as technical issues',
+			'Site Content' => 'Site Content - changes, additions and page ordering',
+			'Other' => 'Other - thoughts about the site'
 		);
 		
 		$fields = new FieldSet(
